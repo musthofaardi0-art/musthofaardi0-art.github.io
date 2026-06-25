@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziswaf Kopsyah BMI - Koperasi Syariah Benteng Mikro Indonesia</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for beautiful icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        accent: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #15803d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #14532d;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-15px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .animate-slide-in {
+            animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center space-x-3">
+                    <!-- Brand Logo Concept -->
+                    <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 text-white shadow-md shadow-brand-200">
+                        <i class="fa-solid fa-mosque text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-tight text-slate-900 flex items-center">
+                            ZEE<span class="text-brand-600">SWAF</span>
+                            <span class="ml-1.5 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-accent-100 text-accent-700 rounded-md">BMI</span>
+                        </span>
+                        <p class="text-[9px] text-slate-500 font-medium tracking-wide leading-none uppercase">Kopsyah Benteng Mikro Indonesia</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#beranda" class="text-slate-600 hover:text-brand-700 font-medium transition-colors">Beranda</a>
+                    <a href="#tentang" class="text-slate-600 hover:text-brand-700 font-medium transition-colors">Tentang Kami</a>
+                    <a href="#program" class="text-slate-600 hover:text-brand-700 font-medium transition-colors">Program</a>
+                    <a href="#kalkulator" class="text-slate-600 hover:text-brand-700 font-medium transition-colors">Kalkulator Zakat</a>
+                    <a href="#donasi" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-white font-semibold bg-brand-600 hover:bg-brand-700 active:scale-95 shadow-lg shadow-brand-100 hover:shadow-brand-200 transition-all">
+                        <i class="fa-solid fa-heart-circle-check mr-2"></i> Donasi Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brand-700 focus:outline-none p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 pt-2 pb-6 space-y-3 shadow-inner">
+            <a href="#beranda" class="block px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 hover:text-brand-700 font-medium transition-all">Beranda</a>
+            <a href="#tentang" class="block px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 hover:text-brand-700 font-medium transition-all">Tentang Kami</a>
+            <a href="#program" class="block px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 hover:text-brand-700 font-medium transition-all">Program</a>
+            <a href="#kalkulator" class="block px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 hover:text-brand-700 font-medium transition-all">Kalkulator Zakat</a>
+            <a href="#donasi" class="block text-center px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl shadow-md transition-all">
+                <i class="fa-solid fa-heart-circle-check mr-2"></i> Donasi Sekarang
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative bg-white pt-8 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
+        <!-- Background decorative vectors -->
+        <div class="absolute inset-y-0 right-0 w-1/2 bg-brand-50/50 rounded-l-[100px] -z-10 hidden lg:block"></div>
+        <div class="absolute top-10 left-10 w-48 h-48 bg-accent-100/30 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-brand-100 text-brand-800 mb-6">
+                        <i class="fa-solid fa-star-and-crescent mr-1.5"></i> Platform Digital ZISWAF Resmi Kopsyah BMI
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                        Wujudkan Kemaslahatan Bersama Melalui <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-800">ZISWAF</span>
+                    </h1>
+                    <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Tunaikan Zakat, Infaq, Sedekah, dan Wakaf secara amanah, profesional, serta transparan bersama Koperasi Syariah terbesar di Indonesia. Membangun peradaban baru koperasi demi kesejahteraan ummat.
+                    </p>
+                    
+                    <div class="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                        <a href="#donasi" class="inline-flex items-center justify-center px-8 py-4 bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold rounded-2xl shadow-lg shadow-brand-100 hover:shadow-brand-200 transition-all">
+                            <i class="fa-solid fa-hand-holding-heart mr-2.5 text-lg"></i> Tunaikan Ziswaf
+                        </a>
+                        <a href="#tentang" class="inline-flex items-center justify-center px-8 py-4 border-2 border-slate-200 hover:border-brand-600 text-slate-700 hover:text-brand-700 font-bold rounded-2xl transition-all bg-white hover:bg-brand-50/20">
+                            Pelajari Profil Kami <i class="fa-solid fa-chevron-right ml-2.5 text-sm"></i>
+                        </a>
+                    </div>
+
+                    <!-- Highlight Badges -->
+                    <div class="mt-10 pt-8 border-t border-slate-100 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 text-left">
+                        <div>
+                            <p class="text-2xl font-extrabold text-brand-700">195K+</p>
+                            <p class="text-xs font-medium text-slate-500">Anggota Aktif</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-brand-700">77</p>
+                            <p class="text-xs font-medium text-slate-500">Kantor Cabang</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-brand-700">11+</p>
+                            <p class="text-xs font-medium text-slate-500">Ambulans Wakaf</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Interface / Interactive Card Preview -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md bg-white rounded-3xl shadow-xl shadow-slate-100 border border-slate-100 p-6 md:p-8">
+                        <div class="absolute -top-4 -right-4 bg-accent-500 text-white font-bold py-1.5 px-3.5 rounded-full text-xs shadow-md uppercase tracking-wider animate-bounce">
+                            Syariah & Amanah
+                        </div>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-bold text-lg text-slate-800">Penyaluran Ziswaf Terkini</h3>
+                            <span class="text-xs text-brand-600 font-semibold bg-brand-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-clock mr-1"></i> Real-time</span>
+                        </div>
+
+                        <!-- Mini Feed -->
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-200 transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-kit-medical"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Wakaf Produktif</p>
+                                    <h4 class="text-sm font-bold text-slate-800 truncate">Operasional Gratis Ambulans</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Membantu pengantaran pasien dhuafa di pelosok daerah banten.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-200 transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-accent-100 text-accent-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-house-chimney-crack"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Hibah Rumah (HRH)</p>
+                                    <h4 class="text-sm font-bold text-slate-800 truncate">Pembangunan Rumah Siap Huni</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Pembangunan rumah layak huni gratis ke-422 untuk dhuafa.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-200 transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Infaq & Sedekah</p>
+                                    <h4 class="text-sm font-bold text-slate-800 truncate">Beasiswa Pendidikan Anak Anggota</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Penyerahan bantuan biaya sekolah bagi putra-putri dhuafa berprestasi.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+                            <a href="#program" class="text-xs font-bold text-brand-700 hover:text-brand-800 inline-flex items-center group">
+                                Lihat Semua Program Distribusi 
+                                <i class="fa-solid fa-arrow-right ml-1 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile / Tentang Kami Section -->
+    <section id="tentang" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-700 font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-circle-info mr-1"></i> Mengenal Kami</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-serif">Koperasi Syariah Benteng Mikro Indonesia</h2>
+                <div class="w-16 h-1 bg-accent-500 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-5 leading-relaxed">
+                    Kopsyah BMI adalah koperasi syariah yang berfokus pada pemberdayaan ekonomi mikro, sosial, dan spiritual. Berlandaskan semangat gotong royong dan kemitraan syariah.
+                </p>
+            </div>
+
+            <!-- Vision and Mission Card Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <!-- Visi -->
+                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-md border border-slate-100">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-eye text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Visi Kopsyah BMI</h3>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        Menjadi Koperasi Simpan Pinjam dan Pembiayaan Syariah yang terdepan dalam Pemberdayaan Ekonomi, Sosial dan Budaya demi kesejahteraan masyarakat yang berkeadilan sosial.
+                    </p>
+                </div>
+
+                <!-- Misi -->
+                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-md border border-slate-100">
+                    <div class="w-12 h-12 rounded-2xl bg-accent-100 text-accent-700 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-bullseye text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Misi Strategis</h3>
+                    <ul class="space-y-3.5 text-slate-600 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-brand-600 mr-2.5 mt-1 shrink-0"><i class="fa-solid fa-circle-check"></i></span>
+                            <span>Mengelola koperasi simpan pinjam pembiayaan syariah secara modern, mandiri, profesional & inklusif.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-brand-600 mr-2.5 mt-1 shrink-0"><i class="fa-solid fa-circle-check"></i></span>
+                            <span>Memberikan pelayanan prima melalui Sodaqoh, Pinjaman, Pembiayaan, Simpanan, dan Investasi.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-brand-600 mr-2.5 mt-1 shrink-0"><i class="fa-solid fa-circle-check"></i></span>
+                            <span>Meningkatkan kualitas hidup dalam bidang ekonomi, pendidikan, kesehatan, sosial, dan spiritual.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Leadership & History Tab System -->
+            <div class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden">
+                <div class="flex border-b border-slate-100" id="tabs-nav">
+                    <button id="btn-tab-pimpinan" onclick="switchTab('tab-pimpinan')" class="flex-1 py-5 text-center font-bold text-slate-800 border-b-2 border-brand-600 bg-slate-50 transition-all">
+                        <i class="fa-solid fa-user-tie mr-2 text-brand-600"></i> Pimpinan & Pengurus
+                    </button>
+                    <button id="btn-tab-sejarah" onclick="switchTab('tab-sejarah')" class="flex-1 py-5 text-center font-bold text-slate-500 hover:text-slate-800 transition-all">
+                        <i class="fa-solid fa-clock-rotate-left mr-2"></i> Sejarah & Legalitas
+                    </button>
+                    <button id="btn-tab-penghargaan" onclick="switchTab('tab-penghargaan')" class="flex-1 py-5 text-center font-bold text-slate-500 hover:text-slate-800 transition-all">
+                        <i class="fa-solid fa-trophy mr-2"></i> Penghargaan Utama
+                    </button>
+                </div>
+
+                <div class="p-8 md:p-12">
+                    <!-- Tab Content: Pimpinan -->
+                    <div id="tab-pimpinan" class="tab-panel block">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-4 text-center lg:text-left">
+                                <div class="w-48 h-48 rounded-full overflow-hidden bg-slate-200 border-4 border-brand-100 mx-auto lg:mx-0 shadow-inner flex items-center justify-center">
+                                    <span class="text-6xl text-slate-400 font-bold"><i class="fa-regular fa-user"></i></span>
+                                </div>
+                                <h4 class="mt-4 text-lg font-bold text-slate-900">Kamaruddin Batubara, S.E., M.E.</h4>
+                                <p class="text-sm font-semibold text-brand-600">Presiden Direktur Kopsyah BMI</p>
+                                <p class="text-xs text-slate-500 mt-1">Penerima Satya Lencana Wirakarya dari Presiden RI (2018)</p>
+                            </div>
+                            <div class="lg:col-span-8 space-y-6">
+                                <h3 class="text-2xl font-bold text-slate-800">Model BMI Syariah</h3>
+                                <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                    Di bawah kepemimpinan pengurus, Kopsyah BMI mengimplementasikan "Model BMI Syariah". Model pemberdayaan ini menyeimbangkan pilar keuangan dengan pilar sosial kemasyarakatan yang didorong oleh kontribusi ZISWAF. Semua ditujukan untuk meningkatkan status mustahik (penerima zakat) menjadi muzakki (pembayar zakat).
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100 text-xs text-slate-600">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-shield-halved text-brand-600"></i>
+                                        <span><strong>Dewan Pengawas Syariah:</strong> H. Hendri Tanjung, Ph.D.</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-check-double text-brand-600"></i>
+                                        <span><strong>Standar Akuntansi:</strong> PSAK 109 Zakat & Wakaf</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Content: Sejarah -->
+                    <div id="tab-sejarah" class="tab-panel hidden space-y-6">
+                        <h3 class="text-2xl font-bold text-slate-800">Perjalanan Berkelanjutan Kopsyah BMI</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                            Bermula dari Lembaga Pembiayaan Pengembangan Usaha Mikro Kecil Menengah (LPP-UMKM) di Kabupaten Tangerang tahun 2003 yang mengadopsi modifikasi pola Grameen Bank yang diprakarsai oleh Prof. Muhammad Yunus. Lembaga ini bertransformasi menjadi Koperasi Syariah profesional skala besar nasional dengan izin Kementerian Koperasi dan UKM RI.
+                        </p>
+                        <div class="relative pl-6 border-l-2 border-brand-600 space-y-6">
+                            <div>
+                                <span class="absolute -left-[9px] top-1 w-4 h-4 bg-brand-600 rounded-full"></span>
+                                <h4 class="font-bold text-slate-900 text-sm">Tahun 2003</h4>
+                                <p class="text-xs text-slate-500">Inisiasi LPP-UMKM bersama Bappeda Tangerang & IPB.</p>
+                            </div>
+                            <div>
+                                <span class="absolute -left-[9px] top-1 w-4 h-4 bg-brand-600 rounded-full"></span>
+                                <h4 class="font-bold text-slate-900 text-sm">Tahun 2013</h4>
+                                <p class="text-xs text-slate-500">Transformasi berbadan hukum Koperasi Syariah Benteng Mikro Indonesia.</p>
+                            </div>
+                            <div>
+                                <span class="absolute -left-[9px] top-1 w-4 h-4 bg-brand-600 rounded-full"></span>
+                                <h4 class="font-bold text-slate-900 text-sm">Tahun 2020</h4>
+                                <p class="text-xs text-slate-500">Meluncurkan digitalisasi donasi (zeeswaf.id) dan perluasan armada ambulans wakaf.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Content: Penghargaan -->
+                    <div id="tab-penghargaan" class="tab-panel hidden">
+                        <h3 class="text-2xl font-bold text-slate-800 mb-6">Dedikasi & Apresiasi Nasional</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
+                                <div class="w-12 h-12 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-medal text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-800 text-sm">Satya Lencana Wirakarya</h4>
+                                <p class="text-xs text-slate-500 mt-2">Diberikan oleh Presiden RI Bapak Ir. Joko Widodo atas prestasi pemberdayaan koperasi.</p>
+                            </div>
+                            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
+                                <div class="w-12 h-12 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-award text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-800 text-sm">AMPL Award 2015</h4>
+                                <p class="text-xs text-slate-500 mt-2">Sebagai inovator model pembiayaan air minum dan sanitasi berbasis koperasi.</p>
+                            </div>
+                            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
+                                <div class="w-12 h-12 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-trophy text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-800 text-sm">Rekor MURI</h4>
+                                <p class="text-xs text-slate-500 mt-2">Pemberi hibah rumah gratis siap huni (HRH) terbanyak melalui skema ZISWAF.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="program" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-700 font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-hand-holding-heart mr-1"></i> Program ZISWAF</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-serif">Pilar Kesejahteraan Sosial</h2>
+                <div class="w-16 h-1 bg-accent-500 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-5">
+                    Dana Zakat, Infaq, Sedekah, dan Wakaf yang Anda salurkan dikelola secara profesional untuk program pemberdayaan dan bantuan sosial nyata bagi anggota dan masyarakat dhuafa.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Program 1: Zakat -->
+                <div class="bg-slate-50 rounded-3xl p-6 border border-slate-100 hover:border-brand-500 transition-all hover:-translate-y-2 group shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-receipt text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Zakat Maal & Profesi</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Pembersih harta bagi yang telah mencapai nisab. Disalurkan kepada 8 asnaf penerima manfaat, difokuskan pada pemberdayaan ekonomi mikro dhuafa.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="#kalkulator" class="text-xs font-bold text-brand-600 hover:text-brand-700 inline-flex items-center">
+                            Hitung Zakat <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 2: Infaq & Sedekah -->
+                <div class="bg-slate-50 rounded-3xl p-6 border border-slate-100 hover:border-brand-500 transition-all hover:-translate-y-2 group shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-accent-100 text-accent-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-gift text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Infaq & Sedekah</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Amalan sukarela tanpa batas jumlah. Mendukung program santunan darurat, beasiswa pendidikan putra-putri anggota dhuafa, dan bantuan tanggap bencana.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="#donasi" onclick="setProgramField('Infaq / Sedekah')" class="text-xs font-bold text-brand-600 hover:text-brand-700 inline-flex items-center">
+                            Tunaikan Sedekah <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 3: Wakaf Ambulans -->
+                <div class="bg-slate-50 rounded-3xl p-6 border border-slate-100 hover:border-brand-500 transition-all hover:-translate-y-2 group shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-truck-medical text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Wakaf Ambulans</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Wakaf uang produktif yang diwujudkan dalam pengadaan dan operasional gratis mobil ambulans darurat medis bagi daerah jangkauan yang minim akses.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="#donasi" onclick="setProgramField('Wakaf Ambulans')" class="text-xs font-bold text-brand-600 hover:text-brand-700 inline-flex items-center">
+                            Wakaf Uang <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 4: Hibah Rumah Siap Huni (HRH) -->
+                <div class="bg-slate-50 rounded-3xl p-6 border border-slate-100 hover:border-brand-500 transition-all hover:-translate-y-2 group shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-house-chimney text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Wakaf Rumah / HRH</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Mewujudkan mimpi para dhuafa, yatim piatu, dan jompo untuk mendapatkan rumah tinggal mandiri yang kokoh, sehat, bersih, dan beradab secara cuma-cuma.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="#donasi" onclick="setProgramField('Wakaf Rumah Layak Huni')" class="text-xs font-bold text-brand-600 hover:text-brand-700 inline-flex items-center">
+                            Ikut Berwakaf <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zakat Calculator Section -->
+    <section id="kalkulator" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Description Card -->
+                <div class="lg:col-span-5">
+                    <span class="text-brand-700 font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-calculator mr-1"></i> Kemudahan Ibadah</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-serif">Kalkulator Zakat Syariah</h2>
+                    <div class="w-12 h-1 bg-accent-500 mt-4 rounded-full"></div>
+                    <p class="text-slate-600 mt-5 leading-relaxed text-sm md:text-base">
+                        Hitung kewajiban Zakat Anda secara instan dan akurat berdasarkan fatwa syariah terkini. Kami mengintegrasikan nisab emas harian terkini untuk keakuratan kalkulasi.
+                    </p>
+                    
+                    <div class="mt-6 bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                        <div class="flex items-center space-x-3 text-brand-700">
+                            <i class="fa-solid fa-circle-info text-xl"></i>
+                            <span class="font-bold text-sm">Informasi Nisab Terkini</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2">
+                            - <strong>Nisab Zakat Profesi (Pendapatan):</strong> Setara 520 kg beras / bulan (± Rp 6.240.000,-)<br>
+                            - <strong>Nisab Zakat Maal (Tabungan/Emas):</strong> Setara 85 gram emas per tahun (± Rp 127.500.000,- dengan estimasi emas Rp 1.500.000/gram).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Interactive Widget -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+                        <!-- Calc Header / Tabs -->
+                        <div class="flex bg-slate-50 border-b border-slate-100">
+                            <button id="btn-calc-profesi" onclick="switchCalc('calc-profesi')" class="flex-1 py-4 text-center font-bold text-brand-700 border-b-2 border-brand-600 transition-all text-sm md:text-base">
+                                Zakat Profesi / Pendapatan
+                            </button>
+                            <button id="btn-calc-maal" onclick="switchCalc('calc-maal')" class="flex-1 py-4 text-center font-bold text-slate-500 hover:text-slate-800 transition-all text-sm md:text-base">
+                                Zakat Maal / Tabungan & Emas
+                            </button>
+                        </div>
+
+                        <!-- Calc Forms -->
+                        <div class="p-6 md:p-8">
+                            
+                            <!-- Tab: Profesi -->
+                            <div id="calc-profesi" class="calc-panel block space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Pendapatan Bersih Per Bulan (Rupiah)</label>
+                                    <div class="relative rounded-2xl shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <span class="text-slate-500 font-semibold text-sm">Rp</span>
+                                        </div>
+                                        <input type="number" id="inp-pendapatan" oninput="calculateProfesi()" placeholder="Contoh: 8000000" class="block w-full pl-12 pr-4 py-3.5 bg-slate-50 focus:bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-2xl text-slate-800 font-bold placeholder-slate-400 outline-none transition-all">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Pendapatan Lain / Sampingan (Rupiah, opsional)</label>
+                                    <div class="relative rounded-2xl shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <span class="text-slate-500 font-semibold text-sm">Rp</span>
+                                        </div>
+                                        <input type="number" id="inp-pendapatan-lain" oninput="calculateProfesi()" placeholder="Contoh: 2000000" class="block w-full pl-12 pr-4 py-3.5 bg-slate-50 focus:bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-2xl text-slate-800 font-bold placeholder-slate-400 outline-none transition-all">
+                                    </div>
+                                </div>
+
+                                <div id="profesi-status" class="p-4 rounded-2xl text-sm flex items-start space-x-3.5 hidden">
+                                    <span id="profesi-status-icon" class="text-xl"></span>
+                                    <div>
+                                        <h4 id="profesi-status-title" class="font-bold"></h4>
+                                        <p id="profesi-status-desc" class="text-xs mt-1"></p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-brand-50 p-6 rounded-2xl border border-brand-100 flex justify-between items-center">
+                                    <div>
+                                        <span class="text-xs font-bold text-brand-800 uppercase tracking-wider">Estimasi Zakat Anda</span>
+                                        <p class="text-2xl md:text-3xl font-extrabold text-brand-900 mt-1" id="res-profesi">Rp 0</p>
+                                    </div>
+                                    <button onclick="applyZakatToDonation('profesi')" id="btn-pay-profesi" class="px-5 py-3 bg-brand-600 hover:bg-brand-700 active:scale-95 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-all hidden">
+                                        Bayar Zakat <i class="fa-solid fa-chevron-right ml-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Tab: Maal -->
+                            <div id="calc-maal" class="calc-panel hidden space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nilai Tabungan/Deposito/Giro (Rupiah)</label>
+                                    <div class="relative rounded-2xl shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <span class="text-slate-500 font-semibold text-sm">Rp</span>
+                                        </div>
+                                        <input type="number" id="inp-tabungan" oninput="calculateMaal()" placeholder="Contoh: 150000000" class="block w-full pl-12 pr-4 py-3.5 bg-slate-50 focus:bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-2xl text-slate-800 font-bold placeholder-slate-400 outline-none transition-all">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Emas Batangan / Perhiasan (Gram)</label>
+                                        <div class="relative rounded-2xl shadow-sm">
+                                            <input type="number" id="inp-emas" oninput="calculateMaal()" placeholder="0" class="block w-full px-4 py-3.5 bg-slate-50 focus:bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-2xl text-slate-800 font-bold placeholder-slate-400 outline-none transition-all">
+                                            <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                                                <span class="text-slate-500 text-xs font-bold">Gram</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Aset/Investasi Lainnya (Rupiah)</label>
+                                        <div class="relative rounded-2xl shadow-sm">
+                                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                                <span class="text-slate-500 font-semibold text-sm">Rp</span>
+                                            </div>
+                                            <input type="number" id="inp-aset" oninput="calculateMaal()" placeholder="0" class="block w-full pl-12 pr-4 py-3.5 bg-slate-50 focus:bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-2xl text-slate-800 font-bold placeholder-slate-400 outline-none transition-all">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="maal-status" class="p-4 rounded-2xl text-sm flex items-start space-x-3.5 hidden">
+                                    <span id="maal-status-icon" class="text-xl"></span>
+                                    <div>
+                                        <h4 id="maal-status-title" class="font-bold"></h4>
+                                        <p id="maal-status-desc" class="text-xs mt-1"></p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-brand-50 p-6 rounded-2xl border border-brand-100 flex justify-between items-center">
+                                    <div>
+                                        <span class="text-xs font-bold text-brand-800 uppercase tracking-wider">Estimasi Zakat Maal</span>
+                                        <p class="text-2xl md:text-3xl font-extrabold text-brand-900 mt-1" id="res-maal">Rp 0</p>
+                                    </div>
+                                    <button onclick="applyZakatToDonation('maal')" id="btn-pay-maal" class="px-5 py-3 bg-brand-600 hover:bg-brand-700 active:scale-95 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-all hidden">
+                                        Bayar Zakat <i class="fa-solid fa-chevron-right ml-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section / Interactive Form -->
+    <section id="donasi" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-700 font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-heart mr-1"></i> Kepedulian Nyata</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-serif">Formulir Donasi Online ZISWAF</h2>
+                <div class="w-16 h-1 bg-accent-500 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-5">
+                    Mari berpartisipasi dan berkontribusi secara mandiri demi ketahanan sosial ummat melalui sistem pembayaran digital koperasi BMI.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Donation Input Card -->
+                <div class="lg:col-span-7 bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xl font-bold text-slate-800 mb-6"><i class="fa-solid fa-pen-to-square text-brand-600 mr-2"></i> Lengkapi Pilihan Ziswaf Anda</h3>
+                    
+                    <form id="donation-form" onsubmit="handleDonationSubmit(event)" class="space-y-6">
+                        
+                        <!-- Select Program -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2.5">Pilih Program Distribusi</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                <label class="cursor-pointer relative flex flex-col items-center justify-center p-4 bg-white border border-slate-200 hover:border-brand-500 rounded-2xl text-center select-none transition-all" id="lbl-program-zakat">
+                                    <input type="radio" name="program" value="Zakat Maal & Profesi" class="sr-only" onchange="selectProgramUI('Zakat Maal & Profesi')" required>
+                                    <i class="fa-solid fa-receipt text-lg text-brand-600 mb-1.5"></i>
+                                    <span class="text-xs font-bold text-slate-800">Zakat</span>
+                                </label>
+                                
+                                <label class="cursor-pointer relative flex flex-col items-center justify-center p-4 bg-white border border-slate-200 hover:border-brand-500 rounded-2xl text-center select-none transition-all" id="lbl-program-sedekah">
+                                    <input type="radio" name="program" value="Infaq / Sedekah" class="sr-only" onchange="selectProgramUI('Infaq / Sedekah')">
+                                    <i class="fa-solid fa-gift text-lg text-accent-600 mb-1.5"></i>
+                                    <span class="text-xs font-bold text-slate-800">Sedekah</span>
+                                </label>
+
+                                <label class="cursor-pointer relative flex flex-col items-center justify-center p-4 bg-white border border-slate-200 hover:border-brand-500 rounded-2xl text-center select-none transition-all" id="lbl-program-ambulans">
+                                    <input type="radio" name="program" value="Wakaf Ambulans" class="sr-only" onchange="selectProgramUI('Wakaf Ambulans')">
+                                    <i class="fa-solid fa-truck-medical text-lg text-blue-600 mb-1.5"></i>
+                                    <span class="text-xs font-bold text-slate-800">Wakaf Ambulans</span>
+                                </label>
+
+                                <label class="cursor-pointer relative flex flex-col items-center justify-center p-4 bg-white border border-slate-200 hover:border-brand-500 rounded-2xl text-center select-none transition-all" id="lbl-program-rumah">
+                                    <input type="radio" name="program" value="Wakaf Rumah Layak Huni" class="sr-only" onchange="selectProgramUI('Wakaf Rumah Layak Huni')">
+                                    <i class="fa-solid fa-house-chimney text-lg text-orange-600 mb-1.5"></i>
+                                    <span class="text-xs font-bold text-slate-800">Wakaf Rumah</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Amount Option Grid -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2.5">Pilih Nominal Donasi (Rupiah)</label>
+                            <div class="grid grid-cols-3 gap-3 mb-3">
+                                <button type="button" onclick="setNominal(50000)" class="py-2.5 bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50 text-slate-700 hover:text-brand-700 font-bold text-xs rounded-xl transition-all">Rp 50.000</button>
+                                <button type="button" onclick="setNominal(100000)" class="py-2.5 bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50 text-slate-700 hover:text-brand-700 font-bold text-xs rounded-xl transition-all">Rp 100.000</button>
+                                <button type="button" onclick="setNominal(250000)" class="py-2.5 bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50 text-slate-700 hover:text-brand-700 font-bold text-xs rounded-xl transition-all">Rp 250.000</button>
+                                <button type="button" onclick="setNominal(500000)" class="py-2.5 bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50 text-slate-700 hover:text-brand-700 font-bold text-xs rounded-xl transition-all">Rp 500.000</button>
+                                <button type="button" onclick="setNominal(1000000)" class="py-2.5 bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50 text-slate-700 hover:text-brand-700 font-bold text-xs rounded-xl transition-all">Rp 1.000.000</button>
+                                <button type="button" onclick="setNominal(2500000)" class="py-2.5 bg-white border border-slate-200 hover:border-brand-500 hover:bg-brand-50 text-slate-700 hover:text-brand-700 font-bold text-xs rounded-xl transition-all">Rp 2.500.000</button>
+                            </div>
+                            <div class="relative rounded-2xl shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <span class="text-slate-500 font-semibold text-sm">Rp</span>
+                                </div>
+                                <input type="number" id="inp-donasi-nominal" required placeholder="Atau ketik nominal lainnya sendiri" class="block w-full pl-12 pr-4 py-3.5 bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-2xl text-slate-800 font-bold placeholder-slate-400 outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Personal Info -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nama Lengkap Donatur</label>
+                                <input type="text" id="inp-donor-nama" required placeholder="Contoh: Ahmad Fauzi" class="block w-full px-4 py-3.5 bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-2xl text-slate-800 font-medium placeholder-slate-400 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nomor WhatsApp / HP</label>
+                                <input type="tel" id="inp-donor-hp" required placeholder="Contoh: 08123456789" class="block w-full px-4 py-3.5 bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-2xl text-slate-800 font-medium placeholder-slate-400 outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2.5">Metode Pembayaran Simulasi</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <label class="cursor-pointer relative flex items-center space-x-3 p-3.5 bg-white border border-slate-200 hover:border-brand-500 rounded-2xl select-none transition-all" id="lbl-pay-sukarela">
+                                    <input type="radio" name="payment" value="Saldo Sukarela BMI" class="sr-only" onchange="selectPaymentUI('Saldo Sukarela BMI')" required>
+                                    <div class="w-7 h-7 rounded-lg bg-green-50 text-brand-700 flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-wallet text-sm"></i>
+                                    </div>
+                                    <span class="text-xs font-bold text-slate-800 leading-tight">Saldo Sukarela</span>
+                                </label>
+
+                                <label class="cursor-pointer relative flex items-center space-x-3 p-3.5 bg-white border border-slate-200 hover:border-brand-500 rounded-2xl select-none transition-all" id="lbl-pay-doit">
+                                    <input type="radio" name="payment" value="Doit BMI App" class="sr-only" onchange="selectPaymentUI('Doit BMI App')">
+                                    <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-mobile-screen text-sm"></i>
+                                    </div>
+                                    <span class="text-xs font-bold text-slate-800 leading-tight">Doit BMI App</span>
+                                </label>
+
+                                <label class="cursor-pointer relative flex items-center space-x-3 p-3.5 bg-white border border-slate-200 hover:border-brand-500 rounded-2xl select-none transition-all" id="lbl-pay-va">
+                                    <input type="radio" name="payment" value="Bank Syariah Virtual Account" class="sr-only" onchange="selectPaymentUI('Bank Syariah Virtual Account')">
+                                    <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-university text-sm"></i>
+                                    </div>
+                                    <span class="text-xs font-bold text-slate-800 leading-tight">Bank Syariah VA</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full py-4 bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold rounded-2xl shadow-lg shadow-brand-100 hover:shadow-brand-200 transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-circle-check text-lg"></i>
+                            <span>Konfirmasi & Buat Invoice Ziswaf</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Live Bill / Invoice Simulation Preview -->
+                <div class="lg:col-span-5 sticky top-28">
+                    <div class="bg-gradient-to-br from-brand-900 to-brand-800 rounded-3xl p-6 text-white shadow-xl relative overflow-hidden" id="invoice-block">
+                        <!-- BG pattern -->
+                        <div class="absolute inset-0 opacity-5 pointer-events-none">
+                            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+                                <rect width="100" height="100" fill="none"/>
+                                <path d="M50 0 L100 50 L50 100 L0 50 Z" fill="#ffffff" stroke="#ffffff" stroke-width="0.5"/>
+                            </svg>
+                        </div>
+
+                        <!-- Invoice Header -->
+                        <div class="flex items-center justify-between pb-6 border-b border-brand-700/60 relative">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-brand-300">Struk Transaksi</span>
+                                <h3 class="text-lg font-bold text-white mt-1">ZISWAF BMI DIGITAL</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+                                <i class="fa-solid fa-receipt text-lg text-accent-400"></i>
+                            </div>
+                        </div>
+
+                        <!-- Invoice Body -->
+                        <div class="py-6 space-y-4 text-sm border-b border-brand-700/60 relative">
+                            <div class="flex justify-between">
+                                <span class="text-brand-200 font-medium">Donatur:</span>
+                                <span class="font-bold" id="inv-nama">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-brand-200 font-medium">WhatsApp:</span>
+                                <span class="font-bold" id="inv-hp">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-brand-200 font-medium">Program Ziswaf:</span>
+                                <span class="font-bold text-accent-300" id="inv-program">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-brand-200 font-medium">Metode Bayar:</span>
+                                <span class="font-bold" id="inv-metode">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Price summary -->
+                        <div class="py-6 relative flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-brand-200 uppercase font-bold tracking-wider">Total Donasi</span>
+                                <p class="text-3xl font-extrabold text-accent-400 mt-1" id="inv-total">Rp 0</p>
+                            </div>
+                            <div class="hidden" id="inv-badge-paid">
+                                <span class="px-3 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-bold uppercase tracking-wider text-xs rounded-xl flex items-center">
+                                    <i class="fa-solid fa-circle-check mr-1"></i> Berhasil
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Thank you or Next steps -->
+                        <div class="p-4 rounded-2xl bg-brand-950/60 border border-brand-700/40 relative" id="inv-guide">
+                            <p class="text-xs text-brand-200 leading-relaxed">
+                                <i class="fa-solid fa-circle-info text-accent-400 mr-1.5"></i>
+                                Isi formulir di samping dan tekan tombol konfirmasi untuk menghasilkan simulasi invoice dan QR Code pembayaran.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Review Section (Fitur Bagikan Ulasan) -->
+    <section id="ulasan" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-700 font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-comments mr-1"></i> Ruang Suara Publik</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-serif">Bagikan Ulasan & Kisah Manfaat Anda</h2>
+                <div class="w-16 h-1 bg-accent-500 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-5 leading-relaxed text-sm md:text-base">
+                    Apakah Anda terbantu oleh program kami? Atau Anda merasa dipermudah dalam berdonasi? Tuliskan ulasan berharga Anda di bawah ini untuk saling memotivasi dalam kebaikan.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Review Input Form (Left Side) -->
+                <div class="lg:col-span-5 bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-800 mb-6 flex items-center">
+                        <i class="fa-solid fa-pen-to-square text-brand-600 mr-2.5"></i> Tulis Ulasan Baru
+                    </h3>
+                    
+                    <form id="review-form" onsubmit="handleReviewSubmit(event)" class="space-y-4">
+                        <!-- Name Input -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nama Lengkap / Inisial</label>
+                            <input type="text" id="inp-rev-nama" required placeholder="Contoh: Muhammad Fajri" class="block w-full px-4 py-3 bg-slate-50 focus:bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-xl text-slate-800 font-medium placeholder-slate-400 outline-none transition-all">
+                        </div>
+
+                        <!-- Relation Selector -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Hubungan Anda dengan BMI</label>
+                            <select id="inp-rev-peran" class="block w-full px-4 py-3 bg-slate-50 focus:bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-xl text-slate-800 font-semibold outline-none transition-all">
+                                <option value="Anggota Kopsyah BMI">Anggota Kopsyah BMI</option>
+                                <option value="Muzakki (Donatur Zakat)">Muzakki (Donatur Zakat)</option>
+                                <option value="Muwakif (Pemberi Wakaf)">Muwakif (Pemberi Wakaf)</option>
+                                <option value="Penerima Manfaat">Penerima Manfaat Program</option>
+                                <option value="Masyarakat Umum">Masyarakat Umum</option>
+                            </select>
+                        </div>
+
+                        <!-- Interactive Star Rating Selector -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Berikan Rating Bintang</label>
+                            <div class="flex items-center space-x-2 text-2xl" id="star-selector">
+                                <button type="button" onclick="setRating(1)" class="star-btn text-accent-500 transition-all hover:scale-110"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" onclick="setRating(2)" class="star-btn text-accent-500 transition-all hover:scale-110"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" onclick="setRating(3)" class="star-btn text-accent-500 transition-all hover:scale-110"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" onclick="setRating(4)" class="star-btn text-accent-500 transition-all hover:scale-110"><i class="fa-solid fa-star"></i></button>
+                                <button type="button" onclick="setRating(5)" class="star-btn text-accent-500 transition-all hover:scale-110"><i class="fa-solid fa-star"></i></button>
+                            </div>
+                            <!-- Hidden input to store chosen rating -->
+                            <input type="hidden" id="inp-rev-rating" value="5">
+                        </div>
+
+                        <!-- Review Text -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Pesan Ulasan</label>
+                            <textarea id="inp-rev-pesan" required rows="3" placeholder="Ceritakan bagaimana Kopsyah BMI membawa manfaat atau kemudahan untuk Anda..." class="block w-full px-4 py-3 bg-slate-50 focus:bg-white border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-xl text-slate-800 font-medium placeholder-slate-400 outline-none transition-all"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="btn-submit-review" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold rounded-xl shadow-md shadow-brand-100 hover:shadow-brand-200 transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Publikasikan Ulasan</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Live Reviews Feed (Right Side) -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+                        <h3 class="text-lg font-bold text-slate-800">Ulasan Pengguna & Donatur</h3>
+                        <span id="review-count" class="px-3 py-1 bg-brand-100 text-brand-700 text-xs font-extrabold rounded-full">3 Terbit</span>
+                    </div>
+
+                    <!-- Scrollable Review Feed Container -->
+                    <div id="review-container" class="space-y-4 max-h-[520px] overflow-y-auto pr-2">
+                        
+                        <!-- Initial Review 1 -->
+                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 transition-all">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-1 text-accent-500">
+                                    <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+                                </div>
+                                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex items-center"><i class="fa-solid fa-circle-check mr-1"></i> Terverifikasi</span>
+                            </div>
+                            <p class="text-slate-600 text-sm mt-3 italic leading-relaxed">
+                                "Sangat bersyukur sekali mendapatkan berkah dari program Hibah Rumah Siap Huni (HRH) ke-412 Kopsyah BMI. Sebelumnya rumah bocor dan tidak layak, kini kami sekeluarga bisa tidur tenang dan ibadah dengan nyaman."
+                            </p>
+                            <div class="mt-4 pt-3 border-t border-slate-50 flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs uppercase">IA</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">Ibu Aminah</h4>
+                                    <p class="text-[10px] text-slate-500">Penerima Manfaat (Mauk, Tangerang)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Initial Review 2 -->
+                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 transition-all">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-1 text-accent-500">
+                                    <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+                                </div>
+                                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex items-center"><i class="fa-solid fa-circle-check mr-1"></i> Terverifikasi</span>
+                            </div>
+                            <p class="text-slate-600 text-sm mt-3 italic leading-relaxed">
+                                "Layanan pembayaran zakat profesi lewat kalkulator otomatis ini memudahkan kami untuk menghitung nisab harian. Sangat transparan karena langsung mendapatkan update tanda terima transaksi digital."
+                            </p>
+                            <div class="mt-4 pt-3 border-t border-slate-50 flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs uppercase">RD</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">Rudi Darmawan</h4>
+                                    <p class="text-[10px] text-slate-500">Muzakki (Donatur Zakat)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Initial Review 3 -->
+                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 transition-all">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-1 text-accent-500">
+                                    <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+                                </div>
+                                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex items-center"><i class="fa-solid fa-circle-check mr-1"></i> Terverifikasi</span>
+                            </div>
+                            <p class="text-slate-600 text-sm mt-3 italic leading-relaxed">
+                                "Layanan ambulans gratis dari wakaf umat sangat responsif. Waktu mertua saya kritis di malam hari, ambulans BMI langsung datang mengantar ke rumah sakit rujukan tanpa dipungut biaya sepeser pun."
+                            </p>
+                            <div class="mt-4 pt-3 border-t border-slate-50 flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs uppercase">JK</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">Bapak Jaka</h4>
+                                    <p class="text-[10px] text-slate-500">Anggota Kopsyah BMI (Pandeglang)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-700 font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-circle-question mr-1"></i> FAQ</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-3 font-serif">Pertanyaan yang Sering Diajukan</h2>
+                <div class="w-16 h-1 bg-accent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ item 1 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(1)" class="w-full flex items-center justify-between p-5 text-left font-bold text-slate-800 hover:text-brand-700 bg-slate-50/50 hover:bg-slate-50 outline-none transition-all">
+                        <span>Bagaimana transparansi pengelolaan ZISWAF di Kopsyah BMI?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden p-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                        Seluruh dana ZISWAF yang diterima dicatat sesuai standar akuntansi syariah PSAK 109 dengan sistem pembukuan terpisah. Laporan diaudit secara rutin oleh Akuntan Publik eksternal serta diawasi ketat oleh Dewan Pengawas Syariah (DPS) Kopsyah BMI.
+                    </div>
+                </div>
+
+                <!-- FAQ item 2 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(2)" class="w-full flex items-center justify-between p-5 text-left font-bold text-slate-800 hover:text-brand-700 bg-slate-50/50 hover:bg-slate-50 outline-none transition-all">
+                        <span>Apakah non-anggota bisa menyalurkan zakat atau sedekahnya ke sini?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden p-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                        Ya, sangat bisa. Platform digital Zeeswaf BMI dikembangkan untuk memudahkan pembayaran donasi, zakat, infak, dan wakaf baik bagi Anggota Koperasi Syariah BMI maupun masyarakat umum di seluruh Indonesia secara aman dan mudah.
+                    </div>
+                </div>
+
+                <!-- FAQ item 3 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(3)" class="w-full flex items-center justify-between p-5 text-left font-bold text-slate-800 hover:text-brand-700 bg-slate-50/50 hover:bg-slate-50 outline-none transition-all">
+                        <span>Berapa nominal minimal berwakaf ambulans atau rumah layak huni?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden p-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                        Melalui skema Wakaf Uang, Anda dapat berpartisipasi berwakaf dengan nominal berapapun (misal: mulai dari Rp 10.000 atau Rp 50.000). Dana wakaf kolektif dari ribuan muwakif (pemberi wakaf) akan disatukan untuk mendanai pembangunan aset wakaf produktif seperti ambulans baru atau rumah gratis siap huni.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
+            <!-- Brand Column -->
+            <div class="md:col-span-4 space-y-4">
+                <div class="flex items-center space-x-3 text-white">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-brand-600 to-brand-800">
+                        <i class="fa-solid fa-mosque text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-lg font-extrabold tracking-tight">ZEE<span class="text-brand-500">SWAF</span> BMI</span>
+                        <p class="text-[8px] text-slate-400 font-medium tracking-wide uppercase leading-none">Benteng Mikro Indonesia</p>
+                    </div>
+                </div>
+                <p class="text-xs leading-relaxed text-slate-500">
+                    Lembaga Koperasi Simpan Pinjam dan Pembiayaan Syariah (KSPPS) yang amanah, terpercaya, dan berorientasi pada peningkatan kesejahteraan ummat secara inklusif.
+                </p>
+                <!-- Sosmed -->
+                <div class="flex space-x-4 pt-2">
+                    <a href="https://kopsyahbmi.co.id" target="_blank" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-brand-600 text-white flex items-center justify-center transition-all"><i class="fa-solid fa-globe text-xs"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-brand-600 text-white flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-brand-600 text-white flex items-center justify-center transition-all"><i class="fa-brands fa-instagram text-xs"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-brand-600 text-white flex items-center justify-center transition-all"><i class="fa-brands fa-youtube text-xs"></i></a>
+                </div>
+            </div>
+
+            <!-- Program Links -->
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="font-bold text-white text-sm uppercase tracking-wider border-b border-slate-800 pb-2">Program ZISWAF</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#kalkulator" class="hover:text-white transition-all">Zakat Maal & Profesi</a></li>
+                    <li><a href="#donasi" onclick="setProgramField('Infaq / Sedekah')" class="hover:text-white transition-all">Infaq & Sedekah</a></li>
+                    <li><a href="#donasi" onclick="setProgramField('Wakaf Ambulans')" class="hover:text-white transition-all">Wakaf Ambulans Gratis</a></li>
+                    <li><a href="#donasi" onclick="setProgramField('Wakaf Rumah Layak Huni')" class="hover:text-white transition-all">Wakaf Rumah Siap Huni (HRH)</a></li>
+                </ul>
+            </div>
+
+            <!-- Head Office -->
+            <div class="md:col-span-5 space-y-4">
+                <h4 class="font-bold text-white text-sm uppercase tracking-wider border-b border-slate-800 pb-2">Kantor Pusat Kopsyah BMI</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    <i class="fa-solid fa-location-dot text-brand-500 mr-2"></i> Jl. Raya Gading Serpong, Sektor Kelapa Dua, Blok BA 3 No. 34-36, Tangerang, Banten, Indonesia.
+                </p>
+                <div class="space-y-1 text-xs">
+                    <p><i class="fa-solid fa-phone text-brand-500 mr-2"></i> +62-21-5421-XXXX</p>
+                    <p><i class="fa-solid fa-envelope text-brand-500 mr-2"></i> support@zeeswaf.id</p>
+                    <p><i class="fa-solid fa-shield-halved text-brand-500 mr-2"></i> Berizin Kementerian Koperasi & UKM RI</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800 pt-8 text-center text-xs text-slate-600">
+            <p>© 2026 Koperasi Syariah Benteng Mikro Indonesia (Kopsyah BMI). Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Client Interactive Logic -->
+    <script>
+        // Toggle Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close Mobile Menu on Link Click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        let chosenRating = 5;
+
+        // Interactive Star Selector logic
+        function setRating(ratingValue) {
+            chosenRating = ratingValue;
+            document.getElementById('inp-rev-rating').value = ratingValue;
+            
+            const starButtons = document.querySelectorAll('.star-btn');
+            starButtons.forEach((btn, index) => {
+                if (index < ratingValue) {
+                    btn.className = "star-btn text-accent-500 transition-all hover:scale-110";
+                } else {
+                    btn.className = "star-btn text-slate-300 transition-all hover:scale-110";
+                }
+            });
+        }
+
+        // Handle Submission of New Review
+        let totalReviews = 3;
+        function handleReviewSubmit(event) {
+            event.preventDefault();
+
+            const namaInput = document.getElementById('inp-rev-nama').value.trim();
+            const peranInput = document.getElementById('inp-rev-peran').value;
+            const pesanInput = document.getElementById('inp-rev-pesan').value.trim();
+            const ratingInput = parseInt(document.getElementById('inp-rev-rating').value) || 5;
+
+            // Generate two-letter initials for profile avatar
+            const initials = namaInput.split(' ')
+                                       .map(word => word[0])
+                                       .join('')
+                                       .substring(0, 2)
+                                       .toUpperCase();
+
+            // Build Star Rating SVGs based on rating
+            let starsHtml = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < ratingInput) {
+                    starsHtml += '<i class="fa-solid fa-star text-sm"></i>';
+                } else {
+                    starsHtml += '<i class="fa-regular fa-star text-slate-300 text-sm"></i>';
+                }
+            }
+
+            // Create New Review Element
+            const container = document.getElementById('review-container');
+            const reviewCard = document.createElement('div');
+            
+            // Set dynamic animate classes
+            reviewCard.className = "bg-white p-5 rounded-2xl shadow-md border border-brand-200 animate-slide-in";
+            reviewCard.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-1 text-accent-500">
+                        ${starsHtml}
+                    </div>
+                    <span class="text-[10px] font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded-full flex items-center"><i class="fa-solid fa-check mr-1"></i> Baru Saja Ditambahkan</span>
+                </div>
+                <p class="text-slate-600 text-sm mt-3 italic leading-relaxed">
+                    "${pesanInput}"
+                </p>
+                <div class="mt-4 pt-3 border-t border-slate-50 flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-600 to-brand-800 text-white flex items-center justify-center font-bold text-xs uppercase shadow-sm">${initials}</div>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">${namaInput}</h4>
+                        <p class="text-[10px] text-slate-500">${peranInput}</p>
+                    </div>
+                </div>
+            `;
+
+            // Prepend/insert at the top of list
+            container.insertBefore(reviewCard, container.firstChild);
+
+            // Scroll container to the top to see the newly added review
+            container.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Update Counter UI
+            totalReviews++;
+            document.getElementById('review-count').innerText = `${totalReviews} Terbit`;
+
+            // Reset Form Fields & Stars to default (5)
+            document.getElementById('review-form').reset();
+            setRating(5);
+
+            // Give user inline button response indicator
+            const submitBtn = document.getElementById('btn-submit-review');
+            const originalBtnContent = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> <span>Ulasan Anda Terbit!</span>';
+            submitBtn.className = "w-full py-3.5 bg-emerald-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center space-x-2";
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = originalBtnContent;
+                submitBtn.className = "w-full py-3.5 bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold rounded-xl shadow-md shadow-brand-100 hover:shadow-brand-200 transition-all flex items-center justify-center space-x-2";
+            }, 2500);
+        }
+
+        // Tab System for Profile
+        function switchTab(tabId) {
+            // Hide all tab panels
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.add('hidden');
+                panel.classList.remove('block');
+            });
+            // Show active panel
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(tabId).classList.add('block');
+
+            // Style active/inactive button
+            const tabButtons = {
+                'tab-pimpinan': 'btn-tab-pimpinan',
+                'tab-sejarah': 'btn-tab-sejarah',
+                'tab-penghargaan': 'btn-tab-penghargaan'
+            };
+
+            for (const [key, btnId] of Object.entries(tabButtons)) {
+                const btn = document.getElementById(btnId);
+                if (key === tabId) {
+                    btn.classList.add('border-b-2', 'border-brand-600', 'bg-slate-50', 'text-brand-700');
+                    btn.classList.remove('text-slate-500');
+                } else {
+                    btn.classList.remove('border-b-2', 'border-brand-600', 'bg-slate-50', 'text-brand-700');
+                    btn.classList.add('text-slate-500');
+                }
+            }
+        }
+
+        // Calculator Tabs
+        function switchCalc(calcId) {
+            document.querySelectorAll('.calc-panel').forEach(panel => {
+                panel.classList.add('hidden');
+                panel.classList.remove('block');
+            });
+            document.getElementById(calcId).classList.remove('hidden');
+            document.getElementById(calcId).classList.add('block');
+
+            const btnProfesi = document.getElementById('btn-calc-profesi');
+            const btnMaal = document.getElementById('btn-calc-maal');
+
+            if (calcId === 'calc-profesi') {
+                btnProfesi.classList.add('border-b-2', 'border-brand-600', 'text-brand-700');
+                btnProfesi.classList.remove('text-slate-500');
+                btnMaal.classList.remove('border-b-2', 'border-brand-600', 'text-brand-700');
+                btnMaal.classList.add('text-slate-500');
+            } else {
+                btnMaal.classList.add('border-b-2', 'border-brand-600', 'text-brand-700');
+                btnMaal.classList.remove('text-slate-500');
+                btnProfesi.classList.remove('border-b-2', 'border-brand-600', 'text-brand-700');
+                btnProfesi.classList.add('text-slate-500');
+            }
+        }
+
+        // Format Currency Helper
+        function formatRupiah(value) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        // Zakat Profesi Calculator Logic
+        function calculateProfesi() {
+            const p1 = parseFloat(document.getElementById('inp-pendapatan').value) || 0;
+            const p2 = parseFloat(document.getElementById('inp-pendapatan-lain').value) || 0;
+            const totalPendapatan = p1 + p2;
+
+            const nisabProfesiBulan = 6240000; // setara 520 kg beras @12.000
+            const statusDiv = document.getElementById('profesi-status');
+            const statusIcon = document.getElementById('profesi-status-icon');
+            const statusTitle = document.getElementById('profesi-status-title');
+            const statusDesc = document.getElementById('profesi-status-desc');
+            const resVal = document.getElementById('res-profesi');
+            const btnPay = document.getElementById('btn-pay-profesi');
+
+            if (totalPendapatan === 0) {
+                statusDiv.classList.add('hidden');
+                resVal.innerText = formatRupiah(0);
+                btnPay.classList.add('hidden');
+                return;
+            }
+
+            statusDiv.classList.remove('hidden');
+
+            if (totalPendapatan >= nisabProfesiBulan) {
+                const zakatVal = totalPendapatan * 0.025;
+                resVal.innerText = formatRupiah(zakatVal);
+                btnPay.classList.remove('hidden');
+
+                // Update Status UI
+                statusDiv.className = "p-4 rounded-2xl text-sm flex items-start space-x-3.5 bg-brand-50 border border-brand-200 text-brand-900";
+                statusIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+                statusTitle.innerText = "Wajib Membayar Zakat";
+                statusDesc.innerText = `Pendapatan Anda (${formatRupiah(totalPendapatan)}) mencapai/melebihi nisab bulanan (${formatRupiah(nisabProfesiBulan)}).`;
+            } else {
+                resVal.innerText = formatRupiah(0);
+                btnPay.classList.add('hidden');
+
+                statusDiv.className = "p-4 rounded-2xl text-sm flex items-start space-x-3.5 bg-amber-50 border border-amber-200 text-amber-900";
+                statusIcon.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
+                statusTitle.innerText = "Belum Mencapai Nisab";
+                statusDesc.innerText = `Pendapatan Anda belum mencapai syarat wajib zakat bulanan (${formatRupiah(nisabProfesiBulan)}). Sangat dianjurkan untuk menyalurkan Infaq / Sedekah sukarela.`;
+            }
+        }
+
+        // Zakat Maal Calculator Logic
+        function calculateMaal() {
+            const tabungan = parseFloat(document.getElementById('inp-tabungan').value) || 0;
+            const emasGram = parseFloat(document.getElementById('inp-emas').value) || 0;
+            const asetLain = parseFloat(document.getElementById('inp-aset').value) || 0;
+
+            const hargaEmasEstimasi = 1500000; // per gram
+            const totalHarta = tabungan + (emasGram * hargaEmasEstimasi) + asetLain;
+            const nisabMaal = 85 * hargaEmasEstimasi; // 85 gram emas
+
+            const statusDiv = document.getElementById('maal-status');
+            const statusIcon = document.getElementById('maal-status-icon');
+            const statusTitle = document.getElementById('maal-status-title');
+            const statusDesc = document.getElementById('maal-status-desc');
+            const resVal = document.getElementById('res-maal');
+            const btnPay = document.getElementById('btn-pay-maal');
+
+            if (totalHarta === 0) {
+                statusDiv.classList.add('hidden');
+                resVal.innerText = formatRupiah(0);
+                btnPay.classList.add('hidden');
+                return;
+            }
+
+            statusDiv.classList.remove('hidden');
+
+            if (totalHarta >= nisabMaal) {
+                const zakatVal = totalHarta * 0.025;
+                resVal.innerText = formatRupiah(zakatVal);
+                btnPay.classList.remove('hidden');
+
+                statusDiv.className = "p-4 rounded-2xl text-sm flex items-start space-x-3.5 bg-brand-50 border border-brand-200 text-brand-900";
+                statusIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+                statusTitle.innerText = "Wajib Membayar Zakat Maal";
+                statusDesc.innerText = `Total kekayaan yang dihitung (${formatRupiah(totalHarta)}) sudah mencapai nisab tahunan (${formatRupiah(nisabMaal)}).`;
+            } else {
+                resVal.innerText = formatRupiah(0);
+                btnPay.classList.add('hidden');
+
+                statusDiv.className = "p-4 rounded-2xl text-sm flex items-start space-x-3.5 bg-amber-50 border border-amber-200 text-amber-900";
+                statusIcon.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
+                statusTitle.innerText = "Belum Mencapai Nisab Maal";
+                statusDesc.innerText = `Total kekayaan Anda belum mencapai nisab tahunan (${formatRupiah(nisabMaal)}). Anda tidak wajib berzakat maal, tetapi dipersilakan menyalurkan infaq sukarela.`;
+            }
+        }
+
+        // Apply Zakat values into Donation Widget
+        function applyZakatToDonation(type) {
+            let amount = 0;
+            if (type === 'profesi') {
+                const p1 = parseFloat(document.getElementById('inp-pendapatan').value) || 0;
+                const p2 = parseFloat(document.getElementById('inp-pendapatan-lain').value) || 0;
+                amount = Math.round((p1 + p2) * 0.025);
+            } else if (type === 'maal') {
+                const tabungan = parseFloat(document.getElementById('inp-tabungan').value) || 0;
+                const emasGram = parseFloat(document.getElementById('inp-emas').value) || 0;
+                const asetLain = parseFloat(document.getElementById('inp-aset').value) || 0;
+                amount = Math.round((tabungan + (emasGram * 1500000) + asetLain) * 0.025);
+            }
+
+            // Set program as Zakat
+            const radioZakat = document.querySelector('input[name="program"][value="Zakat Maal & Profesi"]');
+            if (radioZakat) {
+                radioZakat.checked = true;
+                selectProgramUI("Zakat Maal & Profesi");
+            }
+
+            // Set amount
+            document.getElementById('inp-donasi-nominal').value = amount;
+
+            // Scroll smoothly to donation section
+            document.getElementById('donasi').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Donation Input Helpers
+        function setNominal(value) {
+            document.getElementById('inp-donasi-nominal').value = value;
+        }
+
+        function setProgramField(programName) {
+            const radio = document.querySelector(`input[name="program"][value="${programName}"]`);
+            if (radio) {
+                radio.checked = true;
+                selectProgramUI(programName);
+            }
+            document.getElementById('donasi').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Styling radio options UI manually on program change
+        function selectProgramUI(selectedVal) {
+            const programs = {
+                "Zakat Maal & Profesi": "lbl-program-zakat",
+                "Infaq / Sedekah": "lbl-program-sedekah",
+                "Wakaf Ambulans": "lbl-program-ambulans",
+                "Wakaf Rumah Layak Huni": "lbl-program-rumah"
+            };
+
+            for (const [val, labelId] of Object.entries(programs)) {
+                const element = document.getElementById(labelId);
+                if (val === selectedVal) {
+                    element.classList.add('border-brand-600', 'bg-brand-50/50', 'ring-2', 'ring-brand-500');
+                } else {
+                    element.classList.remove('border-brand-600', 'bg-brand-50/50', 'ring-2', 'ring-brand-500');
+                }
+            }
+        }
+
+        // Styling payment options UI manually
+        function selectPaymentUI(selectedVal) {
+            const payments = {
+                "Saldo Sukarela BMI": "lbl-pay-sukarela",
+                "Doit BMI App": "lbl-pay-doit",
+                "Bank Syariah Virtual Account": "lbl-pay-va"
+            };
+
+            for (const [val, labelId] of Object.entries(payments)) {
+                const element = document.getElementById(labelId);
+                if (val === selectedVal) {
+                    element.classList.add('border-brand-600', 'bg-brand-50/50', 'ring-2', 'ring-brand-500');
+                } else {
+                    element.classList.remove('border-brand-600', 'bg-brand-50/50', 'ring-2', 'ring-brand-500');
+                }
+            }
+        }
+
+        // Handle Donation Submit & Generate Invoice Mock
+        function handleDonationSubmit(event) {
+            event.preventDefault();
+
+            const nama = document.getElementById('inp-donor-nama').value;
+            const hp = document.getElementById('inp-donor-hp').value;
+            const program = document.querySelector('input[name="program"]:checked').value;
+            const nominal = parseFloat(document.getElementById('inp-donasi-nominal').value) || 0;
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+
+            // Update Invoice Screen
+            document.getElementById('inv-nama').innerText = nama;
+            document.getElementById('inv-hp').innerText = hp;
+            document.getElementById('inv-program').innerText = program;
+            document.getElementById('inv-metode').innerText = payment;
+            document.getElementById('inv-total').innerText = formatRupiah(nominal);
+
+            // Change invoice guide to QR Code simulation / Thank you note
+            const guide = document.getElementById('inv-guide');
+            const badgePaid = document.getElementById('inv-badge-paid');
+            
+            badgePaid.classList.remove('hidden');
+
+            // Generate an elegant simulated success notice
+            guide.innerHTML = `
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-emerald-300 flex items-center">
+                        <i class="fa-solid fa-circle-check text-base mr-2"></i> Transaksi Berhasil Dibuat (Simulasi)
+                    </p>
+                    <p class="text-[11px] leading-normal text-brand-200">
+                        Jazakumullah Khairan Katsiran atas keikhlasan Anda menyalurkan ZISWAF melalui Kopsyah BMI. Dana Anda akan dikelola dengan amanah untuk program kemaslahatan umat.
+                    </p>
+                    <div class="flex items-center space-x-2 pt-2 border-t border-brand-700/50">
+                        <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shrink-0 p-1">
+                            <!-- QR Mock using simple blocks representation -->
+                            <div class="grid grid-cols-3 gap-0.5 w-full h-full text-slate-900">
+                                <div class="bg-black"></div><div class="bg-white"></div><div class="bg-black"></div>
+                                <div class="bg-white"></div><div class="bg-black"></div><div class="bg-white"></div>
+                                <div class="bg-black"></div><div class="bg-white"></div><div class="bg-black"></div>
+                            </div>
+                        </div>
+                        <div class="text-[10px] text-brand-300 leading-tight">
+                            <strong>No. Referensi:</strong> BMI-ZIS-${Math.floor(Math.random() * 900000) + 100000}<br>
+                            Simpan struk digital ini sebagai tanda bukti.
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Toggle FAQ Accordion
+        function toggleFaq(id) {
+            const answer = document.getElementById(`faq-ans-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                answer.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
